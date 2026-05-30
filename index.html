@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Bandy — Data Scientist</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      max-width: 800px;
+      margin: 80px auto 0;
+      padding: 0 24px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header p.tagline {
+      font-size: 1.15rem;
+      color: #8b949e;
+      margin-top: 8px;
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      font-size: 0.95rem;
+      color: #58a6ff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+
+    section { margin-bottom: 56px; }
+
+    section h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #58a6ff;
+      margin-bottom: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #21262d;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .card .meta {
+      font-size: 0.85rem;
+      color: #8b949e;
+    }
+
+    .card p {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #c9d1d9;
+    }
+
+    .card ul {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .card ul li {
+      font-size: 0.95rem;
+      color: #c9d1d9;
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1f6feb22;
+      border: 1px solid #1f6feb55;
+      color: #58a6ff;
+      font-size: 0.78rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin: 4px 4px 4px 0;
+    }
+
+    .stat {
+      display: inline-block;
+      background: #238636;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-group h4 {
+      font-size: 0.85rem;
+      color: #8b949e;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: #8b949e;
+      font-size: 0.85rem;
+      border-top: 1px solid #21262d;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Daniel Bandy</h1>
+  <p class="tagline">Machine Learning · Data Science · Math & Statistics</p>
+  <div class="links">
+    <a href="mailto:dbandy134@outlook.com">✉ dbandy134@outlook.com</a>
+    <a href="https://linkedin.com/in/daniel-bandy-516b1521a/" target="_blank">↗ LinkedIn</a>
+    <a href="https://github.com/danielbandy1" target="_blank">↗ GitHub</a>
+    <a href="https://www.kaggle.com/danielbandy1" target="_blank">↗ Kaggle</a>
+  </div>
+  <p style="margin-top: 12px; font-size: 0.9rem; color: #3fb950;">Available for full-time roles and summer internships — Louisville/Lexington KY or remote</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>About</h2>
+    <div class="card">
+      <p>
+        I'm a Machine Learning practitioner and data scientist completing a dual B.S. in Mathematics
+        and Statistics & Data Science at the University of Kentucky (Lewis Honors College),
+        graduating December 2026. My work spans clinical risk modeling, competitive ML, and
+        building end-to-end data pipelines from raw features to validated predictions.
+      </p>
+      <p style="margin-top: 10px;">
+        I care about models that work in production — calibrated, leakage-resistant, and
+        evaluated honestly. I've done this on electronic health records, F1 racing telemetry,
+        and financial datasets, and I bring the same rigor to every problem.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Machine Learning Research Intern</h3>
+        <span class="meta">2025 – Present</span>
+      </div>
+      <p class="meta">Zero Knowledge Discovery Lab · University of Kentucky · Prof. Chattopadhyay</p>
+      <ul>
+        <li>Built <code>lhm_suite</code> — a full Python package for EHR feature engineering: temporal ICD code encoding, glyph extraction, age-slot encoding, and prevalence-based feature filtering</li>
+        <li>Designed and implemented a QNet-based patient risk scoring API supporting batch inference over longitudinal EHR records</li>
+        <li>Built the full training-to-scoring pipeline: data splitting, model training, probability extraction, and distribution scoring</li>
+        <li>Achieved <strong>AUC 0.9834</strong> on held-out patient cohort for binary clinical risk classification</li>
+      </ul>
+      <span class="stat">AUC 0.9834</span>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>F1 Pit Stop Prediction — Kaggle Playground S6E5</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Binary classification on 439,000+ F1 race records. Engineered 128 features including
+        lap-level aggregates, tire degradation signals, and race-state encodings. Built a
+        rank-average ensemble of Optuna-tuned LightGBM (10-fold DART) + XGBoost + CatBoost
+        with GroupKFold CV to prevent leakage across race groups.
+      </p>
+      <span class="stat">Public LB AUC 0.94593 — Top 5%</span>
+      <div style="margin-top: 14px;">
+        <span class="badge">LightGBM</span>
+        <span class="badge">XGBoost</span>
+        <span class="badge">CatBoost</span>
+        <span class="badge">Optuna</span>
+        <span class="badge">GroupKFold</span>
+        <span class="badge">Python</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Churn Prediction Pipeline</h3>
+        <span class="meta">2025–2026</span>
+      </div>
+      <p>
+        End-to-end customer churn classification pipeline with MLflow experiment tracking,
+        probability calibration analysis, and modular feature engineering. Built for
+        reproducibility and production-readiness.
+      </p>
+      <div style="margin-top: 14px;">
+        <span class="badge">scikit-learn</span>
+        <span class="badge">MLflow</span>
+        <span class="badge">pandas</span>
+        <span class="badge">Python</span>
+      </div>
+      <a href="https://github.com/danielbandy1/churn-prediction" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Causal A/B Test Framework</h3>
+        <span class="meta">2025–2026</span>
+      </div>
+      <p>
+        End-to-end A/B test analysis on a 298,000-user website experiment. Covers data quality auditing, frequentist and Bayesian inference, novelty effect detection, propensity score matching, and subgroup heterogeneity analysis with 51-test pytest suite.
+      </p>
+      <div style="margin-top: 14px;">
+        <span class="badge">scipy</span>
+        <span class="badge">statsmodels</span>
+        <span class="badge">Python</span>
+        <span class="badge">pytest</span>
+      </div>
+      <a href="https://github.com/danielbandy1/causal-ab-test" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>NEXIS — AI Systems Infrastructure</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Built a production AI system on Linux infrastructure integrating Claude (Anthropic) and OpenAI Codex as collaborating agents via a tmux-based bridge (aicodex). Includes systemd-managed watchdog services, HTTP delegation APIs, usage monitoring, and an automated task handoff protocol. The system runs 24/7 on dedicated hardware.
+      </p>
+      <div style="margin-top: 14px;">
+        <span class="badge">Python</span>
+        <span class="badge">Bash</span>
+        <span class="badge">systemd</span>
+        <span class="badge">tmux</span>
+        <span class="badge">Linux</span>
+        <span class="badge">REST APIs</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Hospital Readmission Prediction</h3>
+        <span class="meta">2025–2026</span>
+      </div>
+      <p>
+        Binary classification pipeline predicting 30-day hospital readmission risk on the Diabetes 130-US dataset. Gradient boosting with SHAP explainability, isotonic calibration, and GitHub Actions CI. Full test suite with pytest.
+      </p>
+      <div style="margin-top: 14px;">
+        <span class="badge">LightGBM</span>
+        <span class="badge">SHAP</span>
+        <span class="badge">scikit-learn</span>
+        <span class="badge">Python</span>
+      </div>
+      <a href="https://github.com/danielbandy1/hospital-readmission" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Automated Paper Trading System</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Fully automated long/short equity paper trading bot running on Alpaca's API. Features technical indicator signal generation, position sizing logic, real-time market data ingestion, and a monitoring dashboard. Deployed as a persistent systemd service.
+      </p>
+      <div style="margin-top: 14px;">
+        <span class="badge">Python</span>
+        <span class="badge">Alpaca API</span>
+        <span class="badge">pandas</span>
+        <span class="badge">systemd</span>
+        <span class="badge">Linux</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>ML / Modeling</h4>
+        <span class="badge">LightGBM</span>
+        <span class="badge">XGBoost</span>
+        <span class="badge">CatBoost</span>
+        <span class="badge">scikit-learn</span>
+        <span class="badge">statsmodels</span>
+        <span class="badge">Optuna</span>
+        <span class="badge">PyTorch</span>
+        <span class="badge">MLflow</span>
+      </div>
+      <div class="skill-group">
+        <h4>Data / Engineering</h4>
+        <span class="badge">pandas</span>
+        <span class="badge">numpy</span>
+        <span class="badge">scipy</span>
+        <span class="badge">SQL</span>
+        <span class="badge">Power BI</span>
+        <span class="badge">matplotlib</span>
+        <span class="badge">Git</span>
+      </div>
+      <div class="skill-group">
+        <h4>Concepts</h4>
+        <span class="badge">Binary Classification</span>
+        <span class="badge">Imbalanced Learning</span>
+        <span class="badge">AUC / ROC</span>
+        <span class="badge">Cross-Validation</span>
+        <span class="badge">Feature Engineering</span>
+        <span class="badge">Hyperparameter Tuning</span>
+      </div>
+      <div class="skill-group">
+        <h4>Infrastructure</h4>
+        <span class="badge">Linux</span>
+        <span class="badge">HPC / SLURM</span>
+        <span class="badge">Jupyter</span>
+        <span class="badge">Python</span>
+        <span class="badge">R</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>University of Kentucky — Lewis Honors College</h3>
+        <span class="meta">2023 – Dec 2026</span>
+      </div>
+      <p>Dual B.S.: Mathematics (Math of Data, Computation & Finance) + Statistics and Data Science · Minor: Computer Science · GPA: 3.661</p>
+      <p style="margin-top: 8px; color: #8b949e; font-size: 0.9rem;">Accelerated Master's Pathway (AMP) — coursework applying toward M.S. in Data Science</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Jefferson Community and Technical College</h3>
+        <span class="meta">2021 – 2023</span>
+      </div>
+      <p>Associate of Science · GPA: 3.7 · Louisville, KY</p>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>Daniel Bandy · Shepherdsville, KY · <a href="mailto:dbandy134@outlook.com">dbandy134@outlook.com</a></p>
+</footer>
+
+</body>
+</html>
