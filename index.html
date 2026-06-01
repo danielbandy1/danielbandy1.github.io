@@ -348,9 +348,11 @@
       <span class="stat blue">Stratified 5-Fold</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">Streamlit</span>
+        <span class="badge">SHAP</span>
         <span class="badge">scikit-learn</span>
         <span class="badge">imbalanced-learn</span>
-        <span class="badge">pandas</span>
         <span class="badge">Python</span>
       </div>
     </div>
@@ -376,19 +378,26 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Hospital Readmission Prediction — LightGBM</h3>
+        <h3>Hospital Readmission Prediction</h3>
         <span class="meta">2025–2026</span>
       </div>
       <p>
-        ZED Lab research pipeline predicting hospital readmission risk with LightGBM + Optuna
-        on 101K diabetic EHR encounters and 65 engineered features. Built with validation-focused
-        feature engineering, threshold tuning, and reproducible training/evaluation scripts.
+        End-to-end 30-day readmission risk pipeline on the UCI Diabetes 130-US dataset
+        (101K encounters, 11.2% positive rate). Built 74 engineered EHR features including
+        ICD-9 category encoding, medication trajectory, A1c/glucose tiers, and discharge
+        disposition flags. Dual-model approach: LightGBM (Optuna, 100 trials) and
+        XGBoost with isotonic calibration. Deployed as FastAPI inference endpoint with
+        SHAP explanations and a Streamlit risk-scoring dashboard.
       </p>
-      <span class="stat">MCC 0.4834</span>
+      <span class="stat">AUPRC 0.227</span>
+      <span class="stat blue">AUC 0.68</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
+        <span class="badge">XGBoost</span>
         <span class="badge">Optuna</span>
         <span class="badge">SHAP</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">Streamlit</span>
         <span class="badge">scikit-learn</span>
         <span class="badge">Python</span>
       </div>
@@ -425,21 +434,52 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Churn Prediction Pipeline</h3>
+        <h3>Telco Churn Prediction</h3>
         <span class="meta">2025–2026</span>
       </div>
       <p>
-        End-to-end customer churn classification with MLflow experiment tracking,
-        probability calibration analysis, and modular feature engineering. Built for
-        reproducibility and production-readiness.
+        Customer churn classification on the IBM Telco dataset with LightGBM + XGBoost
+        (Optuna-tuned), 31 engineered features, and isotonic probability calibration.
+        Includes a Streamlit business dashboard with per-customer risk tier, SHAP
+        feature attribution, retention action recommendations, and monthly revenue-at-risk
+        metric. Deployed with a FastAPI scoring endpoint.
       </p>
+      <span class="stat">AUC 0.87</span>
       <div style="margin-top: 14px;">
-        <span class="badge">scikit-learn</span>
-        <span class="badge">MLflow</span>
-        <span class="badge">pandas</span>
+        <span class="badge">LightGBM</span>
+        <span class="badge">XGBoost</span>
+        <span class="badge">Optuna</span>
+        <span class="badge">SHAP</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">Streamlit</span>
         <span class="badge">Python</span>
       </div>
       <a href="https://github.com/danielbandy1/churn-prediction" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Energy Demand Forecasting</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Short-term load forecasting (STLF) on AEP Ohio PJM Interconnection hourly data
+        (121K readings, 2004–2018). LightGBM trained with Optuna on 24 lag, cyclical,
+        and rolling-window features. Achieves sub-3% MAPE on 2018 hold-out — relevant
+        to utility dispatch, customer rate design, and energy retail analytics.
+        Deployed as a FastAPI window-forecast endpoint and a Streamlit dashboard with
+        actual-vs-predicted views, 24-hour simulator, and demand pattern analysis.
+      </p>
+      <span class="stat">&lt;3% MAPE</span>
+      <span class="stat blue">121K readings</span>
+      <div style="margin-top: 14px;">
+        <span class="badge">LightGBM</span>
+        <span class="badge">Optuna</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">Streamlit</span>
+        <span class="badge">Plotly</span>
+        <span class="badge">Python</span>
+      </div>
     </div>
 
   </section>
