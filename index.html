@@ -229,7 +229,7 @@
     <a href="https://github.com/danielbandy1" target="_blank">↗ GitHub</a>
     <a href="https://www.kaggle.com/danielbandy1" target="_blank">↗ Kaggle</a>
   </div>
-  <p class="available">Available for full-time roles and summer internships — Louisville / Lexington KY or remote</p>
+  <p class="available">Available for summer 2026 internships and full-time roles starting January 2027 — Louisville / Lexington KY or remote</p>
 </header>
 
 <main>
@@ -243,12 +243,11 @@
         on the Accelerated Master's Pathway toward an M.S. in Data Science.
       </p>
       <p style="margin-top: 10px;">
-        My work spans clinical risk modeling (AUC 0.9834 on EHR data), competitive ML
-        (top 5% Kaggle), and production AI systems — including a multi-agent autonomous
-        infrastructure I designed and run 24/7 on dedicated hardware. I care about models
-        that work in production: calibrated, leakage-resistant, and evaluated honestly.
-        I've done this on electronic health records, F1 racing telemetry, and financial
-        datasets, and I bring the same rigor to every problem.
+        My work spans clinical risk modeling (AUC 0.9834 on EHR data), fraud detection
+        (AUPRC 0.88 on PaySim), competitive ML (top 5% Kaggle), and production AI systems —
+        including a multi-agent autonomous infrastructure I designed and run 24/7 on dedicated
+        hardware. I care about models that work in deployment: calibrated, leakage-resistant,
+        and evaluated against the metrics that actually matter for the problem.
       </p>
     </div>
   </section>
@@ -279,36 +278,18 @@
     <div class="card featured">
       <div class="featured-label">Featured</div>
       <div class="card-header">
-        <h3>NEXIS — Autonomous Multi-Agent AI Infrastructure</h3>
+        <h3>NEXIS — Multi-Agent AI System</h3>
         <span class="meta">2026</span>
       </div>
       <p>
-        A production-grade autonomous AI system running 24/7 on dedicated Linux hardware.
-        Three coordinating agents — Jarvis (Claude / orchestrator), ORION (GPT-5.5 / executor),
-        and Atlas (local Ollama / analyst) — collaborate on tasks through a custom dispatch
-        protocol I designed from scratch.
+        Multi-agent AI system for delegating software and operations tasks across cloud and
+        local models. Built around shared logs, tmux sessions, shell tooling, Git workflows,
+        local Ollama models, and an internal dispatch protocol.
       </p>
-      <div class="agent-row"><span class="agent-label">Jarvis</span> Orchestrates work, maintains memory, delegates to ORION</div>
-      <div class="agent-row"><span class="agent-label">ORION</span> Autonomous executor — runs code, writes files, reports back</div>
-      <div class="agent-row"><span class="agent-label">Atlas</span> Local qwen3:8b for fast analysis, summaries, and compliance review</div>
-      <div class="agent-row"><span class="agent-label">Damion</span> Oversight agent — audits ORION's transcripts every 2h, emails on violations</div>
-
-      <div class="terminal-block">
-        <span class="prompt">$</span> <span class="output">nexis-status</span><br>
-        <span class="dim">CLAUDE-0  active · CODEX-0  active · ATLAS-0  active</span><br>
-        <span class="dim">nexis-api  ✓  aiweb  ✓  codex-bridge  ✓  paper-trader  ✓</span><br>
-        <span class="dim">Damion last audit: COMPLIANT  ·  smoke: 5/5</span><br>
-        <span class="prompt">$</span> <span class="output">nexis-fork daniel@new-host --name NEXIS-2</span><br>
-        <span class="dim">[nexis-fork] Cloning RED-AI-FRAMEWORK … installing services … sessions launched</span><br>
-        <span class="dim">[nexis-fork] NEXIS FORK COMPLETE: NEXIS-2 on new-host</span>
-      </div>
-
       <ul style="margin-top: 14px;">
-        <li>Custom <code>aicodex</code> bridge dispatches tasks to ORION via tmux pane injection with full response capture</li>
-        <li>Usage-aware load balancing — automatically delegates all pending work to ORION when Jarvis hits 90% session usage</li>
-        <li>20+ systemd user services: watchdogs, health monitors, nightly smoke tests, daily backups, compliance audits</li>
-        <li><code>nexis-fork</code> bootstraps a complete NEXIS instance on any SSH-reachable host autonomously</li>
-        <li>HTTP delegation API (nexis-api), persistent memory system, and web dashboard at the Tailscale internal address</li>
+        <li>Routes work between Claude, GPT, and local Ollama agents with persistent task logs</li>
+        <li>Uses Bash, Python, systemd, and REST APIs for scheduling, monitoring, and recovery</li>
+        <li>Includes a web dashboard, email notifications, daily backups, and health checks</li>
       </ul>
       <div style="margin-top: 14px;">
         <span class="badge">Python</span>
@@ -325,7 +306,7 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>F1 Pit Stop Prediction — Kaggle Playground S6E5</h3>
+        <h3>Kaggle S6E5 Pit Stop Prediction</h3>
         <span class="meta">2026</span>
       </div>
       <p>
@@ -334,7 +315,7 @@
         rank-average ensemble of Optuna-tuned LightGBM (10-fold DART) + XGBoost + CatBoost
         with GroupKFold CV to prevent leakage across race groups.
       </p>
-      <span class="stat">Public LB AUC 0.94593</span>
+      <span class="stat">LB 0.94593</span>
       <span class="stat gold">Top 5%</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
@@ -342,6 +323,34 @@
         <span class="badge">CatBoost</span>
         <span class="badge">Optuna</span>
         <span class="badge">GroupKFold</span>
+        <span class="badge">Python</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Financial Fraud Detection Pipeline</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        End-to-end fraud detection pipeline on PaySim synthetic financial transaction data
+        (400K+ records, &lt;0.1% fraud rate). The core challenge is extreme class imbalance —
+        AUC flatters you on these datasets; AUPRC doesn't. Stratified 5-fold cross-validation
+        with undersampling, threshold tuning, and calibration analysis throughout.
+      </p>
+      <ul>
+        <li>Stratified sampling strategy preserving fraud rate across all folds</li>
+        <li>LightGBM with scale_pos_weight tuning, threshold sweep over F1/precision/recall tradeoff</li>
+        <li>Probability calibration analysis — sigmoid vs. isotonic on held-out folds</li>
+        <li>Feature engineering on transaction sequences: rolling aggregates, velocity features, merchant risk signals</li>
+      </ul>
+      <span class="stat">AUPRC 0.88</span>
+      <span class="stat blue">Stratified 5-Fold</span>
+      <div style="margin-top: 14px;">
+        <span class="badge">LightGBM</span>
+        <span class="badge">scikit-learn</span>
+        <span class="badge">imbalanced-learn</span>
+        <span class="badge">pandas</span>
         <span class="badge">Python</span>
       </div>
     </div>
@@ -367,14 +376,15 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Hospital Readmission Prediction</h3>
+        <h3>Hospital Readmission Prediction — LightGBM</h3>
         <span class="meta">2025–2026</span>
       </div>
       <p>
-        Binary classification pipeline predicting 30-day readmission risk on the Diabetes
-        130-US dataset. Gradient boosting with SHAP explainability, isotonic calibration,
-        and GitHub Actions CI. Full pytest suite.
+        LightGBM pipeline predicting hospital readmission risk on structured clinical data.
+        Built with validation-focused feature engineering, threshold tuning, SHAP explainability,
+        and a reproducible training/evaluation workflow.
       </p>
+      <span class="stat">MCC 0.4834</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
         <span class="badge">SHAP</span>
@@ -437,46 +447,37 @@
     <h2>Skills</h2>
     <div class="skills-grid">
       <div class="skill-group">
-        <h4>ML / Modeling</h4>
+        <h4>Core Data Science</h4>
+        <span class="badge">Python</span>
         <span class="badge">LightGBM</span>
         <span class="badge">XGBoost</span>
-        <span class="badge">CatBoost</span>
         <span class="badge">scikit-learn</span>
-        <span class="badge">PyTorch</span>
-        <span class="badge">statsmodels</span>
-        <span class="badge">Optuna</span>
-        <span class="badge">MLflow</span>
-        <span class="badge">SHAP</span>
-      </div>
-      <div class="skill-group">
-        <h4>AI / Agentic Systems</h4>
-        <span class="badge">Claude API</span>
-        <span class="badge">OpenAI API</span>
-        <span class="badge">Ollama</span>
-        <span class="badge">Multi-agent Coordination</span>
-        <span class="badge">LLM Orchestration</span>
-        <span class="badge">RAG</span>
-      </div>
-      <div class="skill-group">
-        <h4>Data / Engineering</h4>
         <span class="badge">pandas</span>
+        <span class="badge">SQL</span>
+      </div>
+      <div class="skill-group">
+        <h4>Engineering Tools</h4>
+        <span class="badge">Bash</span>
+        <span class="badge">Git</span>
+        <span class="badge">Docker</span>
+        <span class="badge">Ollama</span>
+      </div>
+      <div class="skill-group">
+        <h4>Supporting Stack</h4>
         <span class="badge">numpy</span>
         <span class="badge">scipy</span>
-        <span class="badge">SQL</span>
-        <span class="badge">Power BI</span>
+        <span class="badge">FastAPI</span>
         <span class="badge">matplotlib</span>
-        <span class="badge">Git</span>
+        <span class="badge">SHAP</span>
+        <span class="badge">Optuna</span>
       </div>
       <div class="skill-group">
         <h4>Infrastructure</h4>
         <span class="badge">Linux</span>
-        <span class="badge">Python</span>
-        <span class="badge">Bash</span>
         <span class="badge">systemd</span>
         <span class="badge">HPC / SLURM</span>
-        <span class="badge">Docker</span>
         <span class="badge">REST APIs</span>
-        <span class="badge">R</span>
+        <span class="badge">tmux</span>
       </div>
     </div>
   </section>
