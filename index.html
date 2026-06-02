@@ -355,6 +355,7 @@
         <span class="badge">imbalanced-learn</span>
         <span class="badge">Python</span>
       </div>
+      <a href="https://github.com/danielbandy1/fraud-detection" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
     </div>
 
     <div class="card">
@@ -480,6 +481,57 @@
         <span class="badge">Plotly</span>
         <span class="badge">Python</span>
       </div>
+      <a href="https://github.com/danielbandy1/energy-forecast" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>News Topic Classifier (NLP)</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Fine-tuned DistilBERT on the AG News corpus (120K articles) for 4-class news topic
+        classification — World, Sports, Business, Sci/Tech. Trained on MCC (University of
+        Kentucky HPC cluster) via SLURM. Served through a FastAPI inference endpoint and
+        an interactive Streamlit demo.
+      </p>
+      <span class="stat">~94% Accuracy</span>
+      <span class="stat blue">120K articles</span>
+      <div style="margin-top: 14px;">
+        <span class="badge">DistilBERT</span>
+        <span class="badge">HuggingFace</span>
+        <span class="badge">Transformers</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">Streamlit</span>
+        <span class="badge">SLURM / HPC</span>
+        <span class="badge">Python</span>
+      </div>
+      <a href="https://github.com/danielbandy1/nlp-classifier" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Movie Recommender System</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Collaborative filtering recommender on MovieLens 100K (100K ratings, 943 users,
+        1,682 movies). Benchmarks two approaches: truncated SVD (scipy, k=50 latent factors)
+        against user-based k-NN with cosine similarity. SVD achieves ~0.93 RMSE on held-out
+        ratings. Wrapped in a FastAPI /recommend endpoint and a Streamlit UI.
+      </p>
+      <span class="stat">~0.93 RMSE</span>
+      <span class="stat blue">100K ratings</span>
+      <div style="margin-top: 14px;">
+        <span class="badge">SVD</span>
+        <span class="badge">Collaborative Filtering</span>
+        <span class="badge">scipy</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">Streamlit</span>
+        <span class="badge">scikit-learn</span>
+        <span class="badge">Python</span>
+      </div>
+      <a href="https://github.com/danielbandy1/recommender-system" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
     </div>
 
   </section>
@@ -493,6 +545,8 @@
         <span class="badge">LightGBM</span>
         <span class="badge">XGBoost</span>
         <span class="badge">scikit-learn</span>
+        <span class="badge">HuggingFace</span>
+        <span class="badge">Transformers</span>
         <span class="badge">pandas</span>
         <span class="badge">numpy</span>
         <span class="badge">SQL</span>
