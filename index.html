@@ -390,8 +390,8 @@
       <p>
         3-class stellar object classification (Galaxy / QSO / Star) on SDSS photometric
         survey data (577K training records). Built a multi-model ensemble — LightGBM,
-        XGBoost, CatBoost, and tree-based stacking — with 35 engineered features from
-        photometric magnitudes, color indices, galactic coordinates, and redshift.
+        XGBoost, CatBoost, and tree-based stacking — with 61 engineered features from
+        photometric magnitudes, color indices, galactic coordinates, and redshift transforms.
         Optimized final blend weights using Nelder-Mead on OOF log-loss.
       </p>
       <span class="stat">97.0% Accuracy</span>
@@ -404,7 +404,10 @@
         <span class="badge">Nelder-Mead Blend</span>
         <span class="badge">Python</span>
       </div>
-      <a href="https://www.kaggle.com/competitions/playground-series-s6e6" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on Kaggle</a>
+      <div style="margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.kaggle.com/competitions/playground-series-s6e6" target="_blank" style="font-size: 0.9rem;">↗ View on Kaggle</a>
+        <a href="https://github.com/danielbandy1/kaggle-s6e6-stellar-class" target="_blank" style="font-size: 0.9rem;">↗ GitHub</a>
+      </div>
     </div>
 
     <div class="card">
@@ -494,8 +497,8 @@
         XGBoost with isotonic calibration. Deployed as FastAPI inference endpoint with
         SHAP explanations and a Streamlit risk-scoring dashboard.
       </p>
-      <span class="stat">AUPRC 0.285</span>
-      <span class="stat blue">AUC 0.727</span>
+      <span class="stat">AUPRC 0.230</span>
+      <span class="stat blue">AUC 0.680</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
         <span class="badge">XGBoost</span>
