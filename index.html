@@ -357,27 +357,30 @@
         <span class="meta">2026</span>
       </div>
       <p>
-        Production 24/7 multi-agent AI system on a Linux server for Claude, OpenAI, and
-        Ollama orchestration. Built around shared logs, tmux sessions, shell tooling,
-        Git workflows, systemd services, local models, and an internal dispatch protocol
-        for autonomous background work.
+        Production multi-agent AI orchestration system running 24/7 on dedicated Linux hardware.
+        7 active agents (Claude, GPT-4o, Gemini 2.5, Goose, and three Ollama-backed local models)
+        coordinate across a 4-machine Tailscale network via a shared task-queue protocol I designed
+        from scratch — no LangChain, no off-the-shelf framework.
       </p>
       <ul style="margin-top: 14px;">
-        <li>Routes software, research, and job-application tasks between Claude, OpenAI, and local Ollama agents</li>
-        <li>Uses Bash, Python, systemd, and REST APIs for scheduling, monitoring, and recovery</li>
-        <li>Runs autonomous background processing with persistent task logs, mail queues, health checks, and email summaries</li>
+        <li>Designed and implemented a custom inter-agent dispatch protocol (NEXIS_RUN, NEXIS_SEND, NEXIS_WRITE) with per-agent task queues, systemd services, and automatic recovery on reboot</li>
+        <li>Agents execute tasks autonomously: SSH across machines, write and commit code, run backtests, sweep job boards, send email reports — all without human intervention</li>
+        <li>Security layer: SSH honeypot accounts, arpwatch ARP monitoring, append-only transcript logs (chattr +a), and fail2ban across all nodes</li>
+        <li>Built Rasputin: an offline Ollama-backed coding agent (qwen3.6:35b) with Aider integration, bash tool execution, and Destiny lore persona — runs entirely air-gapped on local hardware</li>
       </ul>
+      <span class="stat">7 Active Agents</span>
       <span class="stat">24/7 Production</span>
-      <span class="stat blue">Claude + OpenAI + Ollama</span>
+      <span class="stat blue">4-Machine Tailnet</span>
       <div style="margin-top: 14px;">
         <span class="badge">Python</span>
         <span class="badge">Bash</span>
         <span class="badge">systemd</span>
-        <span class="badge">tmux</span>
         <span class="badge">Ollama</span>
+        <span class="badge">Tailscale</span>
+        <span class="badge">tmux</span>
         <span class="badge">REST APIs</span>
         <span class="badge">Linux</span>
-        <span class="badge">Tailscale</span>
+        <span class="badge">Aider</span>
       </div>
       <a href="https://github.com/danielbandy1/RED-AI-FRAMEWORK" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
     </div>
@@ -409,6 +412,36 @@
         <a href="https://www.kaggle.com/competitions/playground-series-s6e6" target="_blank" style="font-size: 0.9rem;">↗ View on Kaggle</a>
         <a href="https://github.com/danielbandy1/kaggle-s6e6-stellar-class" target="_blank" style="font-size: 0.9rem;">↗ GitHub</a>
       </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Rasputin — Offline AI Coding Agent</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Fully offline AI coding agent built on Ollama (qwen3.6:35b, 35B parameters) with
+        Aider integration for autonomous code generation. Designed as the local compute core of
+        NEXIS when cloud API access is unavailable. Features include bash tool execution,
+        file read/write, inter-agent task routing, and a structured test harness.
+      </p>
+      <ul style="margin-top: 14px;">
+        <li>Custom Python wrapper with streaming output, load-aware inference gating, and context memory</li>
+        <li>Automated test suite (22 checks) covering math, code generation, bash execution, agent routing, and rulebook recall — 13/15 pass rate under adversarial conditions</li>
+        <li>Calculus III competency verified: gradient, double integral, and Lagrange multiplier problems solved correctly</li>
+        <li>Runs entirely air-gapped on local hardware — no API keys, no internet required</li>
+      </ul>
+      <span class="stat">35B Parameters</span>
+      <span class="stat blue">Air-Gapped</span>
+      <div style="margin-top: 14px;">
+        <span class="badge">Ollama</span>
+        <span class="badge">Aider</span>
+        <span class="badge">Python</span>
+        <span class="badge">Bash</span>
+        <span class="badge">qwen3.6:35b</span>
+        <span class="badge">Linux</span>
+      </div>
+      <a href="https://github.com/danielbandy1/RED-AI-FRAMEWORK" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
     </div>
 
     <div class="card">
