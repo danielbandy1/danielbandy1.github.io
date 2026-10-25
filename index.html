@@ -473,26 +473,27 @@
         <span class="meta">2026</span>
       </div>
       <p>
-        End-to-end fraud detection pipeline on PaySim synthetic financial transaction data
-        (400K+ records, &lt;0.1% fraud rate). The core challenge is extreme class imbalance —
-        AUC flatters you on these datasets; AUPRC doesn't. Stratified 5-fold cross-validation
-        with undersampling, threshold tuning, and calibration analysis throughout.
+        End-to-end fraud detection pipeline on PaySim financial transaction simulation
+        (2.77M CASH_OUT and TRANSFER transactions, 8,213 frauds). Enforces strict earlier-step
+        transaction histories to eliminate future-data leakage. Evaluated on a forward-time
+        holdout (steps &gt;600, 43,550 transactions): test Average Precision 0.8895 (95% bootstrap
+        CI: [0.8188, 0.9465]), AUROC 0.9946. Achieves 88.57% precision and 98.81% recall at
+        the validation-tuned operating threshold.
       </p>
       <ul>
-        <li>Stratified sampling strategy preserving fraud rate across all folds</li>
-        <li>LightGBM with scale_pos_weight tuning, threshold sweep over F1/precision/recall tradeoff</li>
-        <li>Probability calibration analysis — sigmoid vs. isotonic on held-out folds</li>
-        <li>Feature engineering on transaction sequences: rolling aggregates, velocity features, merchant risk signals</li>
+        <li>Strict prior-step history feature store: rolling origin/destination velocity without future leakage</li>
+        <li>Prespecified temporal holdout: train (steps 1–500), validation (501–600), test (601–743)</li>
+        <li>Validation-tuned F1 operating threshold with cost and review burden analysis</li>
+        <li>24-hour circular moving-block bootstrap uncertainty estimation</li>
       </ul>
-      <span class="stat">AUPRC 0.88</span>
-      <span class="stat blue">Stratified 5-Fold</span>
+      <span class="stat">Test AP 0.8895</span>
+      <span class="stat blue">Test AUROC 0.9946</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
         <span class="badge">FastAPI</span>
         <span class="badge">Streamlit</span>
         <span class="badge">SHAP</span>
         <span class="badge">scikit-learn</span>
-        <span class="badge">imbalanced-learn</span>
         <span class="badge">Python</span>
       </div>
       <a href="https://github.com/danielbandy1/fraud-detection" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
@@ -519,26 +520,24 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Hospital Readmission Prediction</h3>
+        <h3>Hospital Readmission Benchmark</h3>
         <span class="meta">2025–2026</span>
       </div>
       <p>
         End-to-end 30-day readmission risk pipeline on the UCI Diabetes 130-US dataset
-        (101K encounters, 11.2% positive rate). Built 74 engineered EHR features including
-        ICD-9 category encoding, medication trajectory, A1c/glucose tiers, and discharge
-        disposition flags. Dual-model approach: LightGBM (Optuna, 100 trials) and
-        XGBoost with isotonic calibration. Deployed as FastAPI inference endpoint with
-        SHAP explanations and a Streamlit risk-scoring dashboard.
+        (101,766 encounters, 71,518 unique patients, 11.2% positive rate). Built 74 engineered EHR features
+        including ICD-9 diagnostic grouping, medication trajectories, A1C tiers, and prior utilization.
+        Enforces a strict patient-disjoint holdout (GroupShuffleSplit with zero patient overlap across
+        train and test) to prevent chronic patient memorization. Deployed via FastAPI inference endpoint
+        and Streamlit dashboard with persistent training-fitted category encodings.
       </p>
-      <span class="stat">AUPRC 0.227</span>
-      <span class="stat blue">Historical AUC claim — audit pending publication</span>
+      <span class="stat">Test ROC-AUC 0.6717</span>
+      <span class="stat blue">Test AP 0.2088</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
-        <span class="badge">XGBoost</span>
-        <span class="badge">Optuna</span>
-        <span class="badge">SHAP</span>
         <span class="badge">FastAPI</span>
         <span class="badge">Streamlit</span>
+        <span class="badge">SHAP</span>
         <span class="badge">scikit-learn</span>
         <span class="badge">Python</span>
       </div>
@@ -551,16 +550,21 @@
         <span class="meta">2025–2026</span>
       </div>
       <p>
-        End-to-end causal inference analysis of a 298,000-user website redesign experiment,
-        with an interactive Streamlit dashboard. Combines five distinct methods into one
-        reproducible pipeline with a 51-test pytest suite.
+        Causal inference and decision-quality analysis of a website redesign experiment.
+        Sanitized 294,478 raw events to 290,584 unique users by identifying and excluding 3,893
+        contaminated group/page mismatch telemetry rows. Verified assignment integrity via Chi-Square
+        Sample Ratio Mismatch (SRM) test (&chi;&sup2; = 0.0045, p = 0.947). Conducted two-proportion
+        z-testing (&Delta; = -0.158 pp, p = 0.190) and Beta-Binomial Bayesian conjugate inference
+        (P(Treatment &gt; Control) = 9.53%), showing redesign launch carries an unfavorable risk-reward profile.
       </p>
       <ul style="margin-top: 10px;">
-        <li>Two-proportion z-test + power analysis; Beta-Binomial Bayesian inference with expected loss</li>
-        <li>Propensity score matching (logistic regression + Rubin caliper) to verify randomisation</li>
-        <li>Subgroup heterogeneity via Bonferroni-corrected forest plot + logistic interaction test</li>
-        <li><strong>CUPED</strong> variance reduction — covariate-adjusted lift estimator with SE comparison</li>
+        <li>Sample Ratio Mismatch (SRM) goodness-of-fit verification before metric evaluation</li>
+        <li>Two-proportion pooled z-test with 95% Wald interval and MDE power calculations</li>
+        <li>Beta(1,1) conjugate Bayesian posterior estimation with 1,000,000 Monte Carlo draws</li>
+        <li>Interactive Streamlit dashboard with 55-test verification suite</li>
       </ul>
+      <span class="stat">p = 0.1899</span>
+      <span class="stat blue">290,584 Unique Users</span>
       <div style="margin-top: 14px;">
         <span class="badge">Streamlit</span>
         <span class="badge">Plotly</span>
@@ -571,6 +575,36 @@
         <span class="badge">pytest</span>
       </div>
       <a href="https://github.com/danielbandy1/causal-ab-test" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Bike-Share Demand SQL Analytics</h3>
+        <span class="meta">2026</span>
+      </div>
+      <p>
+        Relational demand analytics pipeline on Capital Bikeshare data (17,379 hourly observations across
+        731 days, totaling 3,292,679 rentals). Designed a relational SQLite schema with foreign key constraints
+        guaranteeing zero count duplication across daily and hourly grains. Executed multi-CTE pipelines with
+        window functions (LAG, DENSE_RANK, 7-day and 30-day rolling averages) to isolate working-day commute
+        peaks (8 AM and 5 PM) from weekend leisure demand (1–3 PM), tracking +64.9% YoY system expansion.
+      </p>
+      <ul style="margin-top: 10px;">
+        <li>Relational grain reconciliation asserting 100% agreement between daily and hourly sums</li>
+        <li>Explicit accounting for 165 unrepresented calendar hours without silent zero-imputation</li>
+        <li>Common Table Expressions (CTEs) and window functions for MoM growth and demand ranking</li>
+        <li>Dual verification harness matching SQLite window results to native Python aggregations</li>
+      </ul>
+      <span class="stat">3,292,679 Rentals</span>
+      <span class="stat blue">17,379 Hours Reconciled</span>
+      <div style="margin-top: 14px;">
+        <span class="badge">SQL (SQLite)</span>
+        <span class="badge">Window Functions</span>
+        <span class="badge">CTEs</span>
+        <span class="badge">Python</span>
+        <span class="badge">Matplotlib</span>
+        <span class="badge">Relational Modeling</span>
+      </div>
     </div>
 
     <div class="card">
