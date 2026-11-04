@@ -476,18 +476,20 @@
         End-to-end fraud detection pipeline on PaySim financial transaction simulation
         (2.77M CASH_OUT and TRANSFER transactions, 8,213 frauds). Enforces strict earlier-step
         transaction histories to eliminate future-data leakage. Evaluated on a forward-time
-        holdout (steps &gt;600, 43,550 transactions): test Average Precision 0.8895 (95% bootstrap
-        CI: [0.8188, 0.9465]), AUROC 0.9946. Achieves 88.57% precision and 98.81% recall at
-        the validation-tuned operating threshold.
+        holdout (steps &gt;600, 43,550 transactions, 3.67% fraud rate) with a validation-fitted 10:1
+        cost-optimal threshold: post-transaction model achieves test Average Precision 0.8803 and AUROC 0.9956
+        (87.81% precision, 99.06% recall); in-line pre-authorization model (13 pre-event features, zero post-balance leakage)
+        achieves test Average Precision 0.8366 and AUROC 0.9896 (83.33% precision, 99.06% recall).
       </p>
       <ul>
-        <li>Strict prior-step history feature store: rolling origin/destination velocity without future leakage</li>
+        <li>Strict prior-step history feature store: rolling origin/destination velocity without future or same-step leakage</li>
         <li>Prespecified temporal holdout: train (steps 1–500), validation (501–600), test (601–743)</li>
-        <li>Validation-tuned F1 operating threshold with cost and review burden analysis</li>
-        <li>24-hour circular moving-block bootstrap uncertainty estimation</li>
+        <li>Dual production models: in-line pre-authorization (AP 0.837) vs. post-settlement detection (AP 0.880)</li>
+        <li>Decision-theoretic validation cost thresholding (FN cost 1.0, FP cost 0.1) avoiding test snooping</li>
       </ul>
-      <span class="stat">Test AP 0.8895</span>
-      <span class="stat blue">Test AUROC 0.9946</span>
+      <span class="stat">Pre-Auth AP 0.8366</span>
+      <span class="stat">Post-Auth AP 0.8803</span>
+      <span class="stat blue">Test AUROC 0.9956</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
         <span class="badge">FastAPI</span>
