@@ -290,8 +290,8 @@
           <span>Kaggle S6E10 (Rank 1,221 / 3,734)</span>
         </div>
         <div class="metric-box">
-          <strong>24/7 AI</strong>
-          <span>NEXUS: Claude + OpenAI + Ollama</span>
+          <strong>0.945 AUC</strong>
+          <span>Kaggle S6E11 (Fraud, Rank 794 / 938)</span>
         </div>
       </div>
     </div>
@@ -445,25 +445,27 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Kaggle S6E5 Pit Stop Prediction</h3>
-        <span class="meta">2026</span>
+        <h3>Kaggle S6E11 Credit Card Fraud Detection</h3>
+        <span class="meta">November 2026</span>
       </div>
       <p>
-        Ensemble model for Kaggle Playground Series S6E5, predicting F1 pit stops from race
-        state and timing features across 400K+ records. Built leakage-aware validation,
-        feature engineering, and blended gradient boosting models with a historical score claim awaiting an official result receipt
-        leaderboard score and a top-5% finish.
+        End-to-end competitive ML pipeline on 1M transactions (700K train, 300K test) predicting credit card fraud.
+        Engineered 38 domain features including amount-to-balance ratios, composite risk mismatch flags, velocity-count interactions,
+        and cyclical time encodings. Trained a 5-fold Stratified LightGBM architecture on the University of Kentucky HPC cluster (SLURM).
       </p>
-      <span class="stat">Score verification pending</span>
-      <span class="stat gold">Rank verification pending</span>
-      <span class="stat blue">400K+ Records</span>
+      <span class="stat">0.9454 Public AUC</span>
+      <span class="stat gold">Rank 794 / 938</span>
+      <span class="stat blue">1M Records · 16 Cores HPC</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
-        <span class="badge">XGBoost</span>
-        <span class="badge">CatBoost</span>
-        <span class="badge">Optuna</span>
-        <span class="badge">GroupKFold</span>
+        <span class="badge">Stratified K-Fold</span>
+        <span class="badge">Domain Feature Engineering</span>
+        <span class="badge">HPC / SLURM</span>
         <span class="badge">Python</span>
+      </div>
+      <div style="margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.kaggle.com/competitions/playground-series-s6e11" target="_blank" style="font-size: 0.9rem;">↗ View on Kaggle</a>
+        <a href="https://github.com/danielbandy1/kaggle-playground-s6e11" target="_blank" style="font-size: 0.9rem;">↗ GitHub</a>
       </div>
     </div>
 
