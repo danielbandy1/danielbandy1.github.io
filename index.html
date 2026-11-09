@@ -290,7 +290,7 @@
           <span>Kaggle S6E10 (Rank 1,221 / 3,734)</span>
         </div>
         <div class="metric-box">
-          <strong>0.945 AUC</strong>
+          <strong>0.946 AUC</strong>
           <span>Kaggle S6E11 (Fraud, Rank 794 / 938)</span>
         </div>
       </div>
@@ -445,21 +445,24 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Kaggle S6E11 Credit Card Fraud Detection</h3>
+        <h3>Kaggle S6E11 Credit Card Fraud Detection Pipeline</h3>
         <span class="meta">November 2026</span>
       </div>
       <p>
-        End-to-end competitive ML pipeline on 1M transactions (700K train, 300K test) predicting credit card fraud.
-        Engineered 38 domain features including amount-to-balance ratios, composite risk mismatch flags, velocity-count interactions,
-        and cyclical time encodings. Trained a 5-fold Stratified LightGBM architecture on the University of Kentucky HPC cluster (SLURM).
+        End-to-end competitive ML pipeline on 1M transactions (700K train, 300K test) predicting credit card fraud under extreme class imbalance (~0.5% fraud rate).
+        Engineered kinematic travel velocity (Haversine distance over elapsed time), behavioral amount z-scores, and 2D target encodings with Laplace smoothing.
+        Trained a heterogeneous 5-fold Stratified ensemble—LightGBM (leaf-wise), XGBoost (depth-wise), and CatBoost (symmetric oblivious trees)—stacked via a logistic regression meta-learner on the University of Kentucky HPC cluster (16 AMD EPYC cores, SLURM).
       </p>
-      <span class="stat">0.9454 Public AUC</span>
+      <span class="stat">0.9462 OOF AUC</span>
+      <span class="stat">0.5076 PR-AUC</span>
       <span class="stat gold">Rank 794 / 938</span>
       <span class="stat blue">1M Records · 16 Cores HPC</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
-        <span class="badge">Stratified K-Fold</span>
-        <span class="badge">Domain Feature Engineering</span>
+        <span class="badge">XGBoost</span>
+        <span class="badge">CatBoost</span>
+        <span class="badge">Logistic Stacking</span>
+        <span class="badge">Kinematic Velocity</span>
         <span class="badge">HPC / SLURM</span>
         <span class="badge">Python</span>
       </div>
