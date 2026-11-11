@@ -450,11 +450,11 @@
       </div>
       <p>
         End-to-end competitive ML pipeline on 1M transactions (700K train, 300K test) predicting credit card fraud under extreme class imbalance (~0.5% fraud rate).
-        Engineered kinematic travel velocity (Haversine distance over elapsed time), behavioral amount z-scores, and 2D target encodings with Laplace smoothing.
-        Trained a heterogeneous 5-fold Stratified ensemble—LightGBM (leaf-wise), XGBoost (depth-wise), and CatBoost (symmetric oblivious trees)—stacked via a logistic regression meta-learner on the University of Kentucky HPC cluster (16 AMD EPYC cores, SLURM).
+        Engineered kinematic travel velocity (Haversine distance over elapsed time), behavioral amount z-scores, dual-smoothed Bayesian target encodings (&lambda; = 15, 60), and non-linear composite risk indices.
+        Trained a heterogeneous 5-fold Stratified ensemble—LightGBM (leaf-wise), XGBoost (depth-wise), and CatBoost (symmetric oblivious trees)—stacked via a 4-way meta-learner (SLSQP, Rank Average, Logistic Meta-Learner, Ridge) on the University of Kentucky HPC cluster (16 AMD EPYC cores, SLURM).
       </p>
-      <span class="stat">0.9462 OOF AUC</span>
-      <span class="stat">0.5076 PR-AUC</span>
+      <span class="stat">0.9460 OOF AUC</span>
+      <span class="stat">0.5066 PR-AUC</span>
       <span class="stat gold">Rank 794 / 938</span>
       <span class="stat blue">1M Records · 16 Cores HPC</span>
       <div style="margin-top: 14px;">
@@ -462,7 +462,7 @@
         <span class="badge">XGBoost</span>
         <span class="badge">CatBoost</span>
         <span class="badge">Logistic Stacking</span>
-        <span class="badge">Kinematic Velocity</span>
+        <span class="badge">Bayesian Target Encoding</span>
         <span class="badge">HPC / SLURM</span>
         <span class="badge">Python</span>
       </div>
@@ -527,25 +527,29 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Hospital Readmission Benchmark</h3>
+        <h3>Hospital Readmission Risk &amp; Real-Time Scorer</h3>
         <span class="meta">2025–2026</span>
       </div>
       <p>
         End-to-end 30-day readmission risk pipeline on the UCI Diabetes 130-US dataset
-        (101,766 encounters, 71,518 unique patients, 11.2% positive rate). Built 74 engineered EHR features
+        (101,766 encounters, 71,518 unique patients, 11.2% positive rate). Built 74 engineered clinical EHR features
         including ICD-9 diagnostic grouping, medication trajectories, A1C tiers, and prior utilization.
         Enforces a strict patient-disjoint holdout (GroupShuffleSplit with zero patient overlap across
-        train and test) to prevent chronic patient memorization. Deployed via FastAPI inference endpoint
-        and Streamlit dashboard with persistent training-fitted category encodings.
+        train and test) to prevent chronic patient memorization. Packaged with a standalone sub-50ms inference
+        scoring engine (<code>ClinicalReadmissionScorer</code>) delivering local TreeExplainer SHAP attributions,
+        clinical risk triage (LOW/MODERATE/HIGH), FastAPI microservice, and Streamlit dashboard.
       </p>
       <span class="stat">Test ROC-AUC 0.6717</span>
       <span class="stat blue">Test AP 0.2088</span>
+      <span class="stat">&lt;50ms Latency SLA</span>
+      <span class="stat blue">52/52 Tests Pass</span>
       <div style="margin-top: 14px;">
         <span class="badge">LightGBM</span>
+        <span class="badge">TreeExplainer SHAP</span>
         <span class="badge">FastAPI</span>
         <span class="badge">Streamlit</span>
-        <span class="badge">SHAP</span>
-        <span class="badge">scikit-learn</span>
+        <span class="badge">Clinical Triage</span>
+        <span class="badge">pytest (52 tests)</span>
         <span class="badge">Python</span>
       </div>
       <a href="https://github.com/danielbandy1/hospital-readmission" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
@@ -553,33 +557,34 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>Causal A/B Test Framework</h3>
+        <h3>Causal Inference &amp; Advanced A/B Testing Platform</h3>
         <span class="meta">2025–2026</span>
       </div>
       <p>
-        Causal inference and decision-quality analysis of a website redesign experiment.
-        Sanitized 294,478 raw events to 290,584 unique users by identifying and excluding 3,893
-        contaminated group/page mismatch telemetry rows. Verified assignment integrity via Chi-Square
-        Sample Ratio Mismatch (SRM) test (&chi;&sup2; = 0.0045, p = 0.947). Conducted two-proportion
-        z-testing (&Delta; = -0.158 pp, p = 0.190) and Beta-Binomial Bayesian conjugate inference
-        (P(Treatment &gt; Control) = 9.53%), showing redesign launch carries an unfavorable risk-reward profile.
+        Production causal inference and sequential experimentation platform for web analytics and macro rollouts (Udacity study, 290,584 unique users).
+        Features multi-covariate regularized CUPED variance reduction (reducing required sample sizes by 20–40% without ATE bias),
+        continuous sequential monitoring via Johari et al. Mixture SPRT (mSPRT) and Wald SPRT with martingale-guaranteed Type I error bounds,
+        Difference-in-Differences (DiD) with dynamic lead-lag parallel trends testing, and Abadie et al. Synthetic Control Methods (SCM) with full in-space placebo permutation inference.
       </p>
       <ul style="margin-top: 10px;">
-        <li>Sample Ratio Mismatch (SRM) goodness-of-fit verification before metric evaluation</li>
-        <li>Two-proportion pooled z-test with 95% Wald interval and MDE power calculations</li>
+        <li>Multi-covariate regularized CUPED variance reduction and automated duration planning</li>
+        <li>Continuous sequential testing (mSPRT / Wald SPRT) preventing peeking p-value inflation</li>
+        <li>Quasi-experimental panel Difference-in-Differences &amp; Synthetic Control with placebo tests</li>
         <li>Beta(1,1) conjugate Bayesian posterior estimation with 1,000,000 Monte Carlo draws</li>
-        <li>Interactive Streamlit dashboard with 55-test verification suite</li>
       </ul>
-      <span class="stat">p = 0.1899</span>
-      <span class="stat blue">290,584 Unique Users</span>
+      <span class="stat">CUPED Variance Reduction</span>
+      <span class="stat blue">mSPRT Stopping Bounds</span>
+      <span class="stat">290,584 Unique Users</span>
+      <span class="stat blue">91/91 Tests Pass (100% Green)</span>
       <div style="margin-top: 14px;">
+        <span class="badge">CUPED</span>
+        <span class="badge">Sequential Testing (mSPRT)</span>
+        <span class="badge">Synthetic Control (SCM)</span>
+        <span class="badge">Difference-in-Differences</span>
         <span class="badge">Streamlit</span>
-        <span class="badge">Plotly</span>
-        <span class="badge">scipy</span>
         <span class="badge">statsmodels</span>
-        <span class="badge">scikit-learn</span>
-        <span class="badge">Python</span>
-        <span class="badge">pytest</span>
+        <span class="badge">scipy</span>
+        <span class="badge">pytest (91 tests)</span>
       </div>
       <a href="https://github.com/danielbandy1/causal-ab-test" target="_blank" style="display:inline-block; margin-top: 12px; font-size: 0.9rem;">↗ View on GitHub</a>
     </div>
